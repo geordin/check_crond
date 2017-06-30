@@ -4,9 +4,9 @@
 
 This plugin is written in bash and is compatible only with servers having Centos7 or later.
 
-For checking the remote servers, the plugin is need to be used in conjuction with the nrpe service.
+For checking the remote servers, the plugin need to be used in conjunction with the nrpe service.
 
-According to the service status, check_crond will give the results OK, CRITICAL, UNKNOWN etc.
+Regarding the service status, check_crond will give the results OK, CRITICAL, UNKNOWN etc.
 
     OK - Running fine
 
