@@ -8,8 +8,8 @@ For checking the remote servers, the plugin is need to be used in conjuction wit
 
 According to the service status, check_crond will give the results OK, CRITICAL, UNKNOWN etc.
 
-OK - Running fine
+    OK - Running fine
 
-CRITICAL - Stopped or dead
+    CRITICAL - Stopped or dead
 
-Unknown - Unknown status
+    Unknown - Unknown status
