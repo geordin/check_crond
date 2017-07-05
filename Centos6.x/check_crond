@@ -1,0 +1,34 @@
+#!/bin/bash
+
+STATE_OK=0
+STATE_WARNING=1
+STATE_CRITICAL=2
+STATE_UNKNOWN=3
+STATE_DEPENDENT=4
+
+CRONPROC=`service crond status 2>/dev/null`
+CRONCHECK=`echo $CRONPROC | grep "running"`
+CRONSTAT=`echo $?`
+if [ "$CRONSTAT" -eq 0 ]
+then
+        PROCSTAT="0"
+else
+        CRONCHECK=`echo $CRONPROC | grep "stopped"`
+        CRONSTAT=`echo $?`
+        if [ "$CRONSTAT" -eq 0 ]
+        then
+                PROCSTAT="1"
+        else
+                PROCSTAT="2"
+                ERROR=`service crond status 2>&1`
+        fi
+fi
+
+case "${PROCSTAT}" in
+        0)  echo "$CRONPROC"; exit ${STATE_OK}
+        ;;
+        1)  echo "$CRONPROC"; exit ${STATE_CRITICAL}
+        ;;
+        2)  echo "$ERROR"; exit ${STATE_UNKNOWN}
+        ;;
+esac
